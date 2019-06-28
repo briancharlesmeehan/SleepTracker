@@ -16,6 +16,7 @@
 
 package com.example.android.trackmysleepquality
 
+import android.util.Log
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -79,7 +80,19 @@ class SleepDatabaseTest {
         assertEquals(sleepDao.getTonight()?.sleepQuality, 2)
     }
 
-    // TODO (2) test clear DAO fxn
+    @Test
+    @Throws(Exception::class)
+    fun clearNights() {
+        val night1 = SleepNight(sleepQuality = 2)
+        val night2 = SleepNight(sleepQuality = 5)
+        val night3 = SleepNight(sleepQuality = 3)
+        sleepDao.insert(night1)
+        sleepDao.insert(night2)
+        sleepDao.insert(night3)
+        sleepDao.clear()
+        val nightId = sleepDao.getTonight()?.nightId
+        assertEquals(null, nightId)
+    }
     // TODO (3) test getAllNights DAO fxn
     // TODO (4) test get DAO fxn
 }
