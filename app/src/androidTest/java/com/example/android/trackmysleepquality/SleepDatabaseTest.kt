@@ -103,6 +103,13 @@ class SleepDatabaseTest {
 
     @Test
     @Throws(Exception::class)
+    fun getAllNightsFromEmpty() {
+        val nights = LiveDataTestUtil.getValue(sleepDao.getAllNights())
+        assertEquals(0, nights.size)
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun insertAndGetAllNights() {
         val night1 = SleepNight(sleepQuality = 2)
         val night2 = SleepNight(sleepQuality = 5)
