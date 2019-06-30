@@ -122,11 +122,13 @@ class SleepDatabaseTest {
         assertEquals(3, nights.size)
     }
 
-    // TODO (4) test get DAO fxn
     @Test
     @Throws(Exception::class)
     fun getNightFromKey() {
-
+        val night = SleepNight()
+        sleepDao.insert(night)
+        val retrievedNight = sleepDao.getTonight()
+        assertEquals(retrievedNight, sleepDao.get(retrievedNight?.nightId!!))
     }
 }
 
