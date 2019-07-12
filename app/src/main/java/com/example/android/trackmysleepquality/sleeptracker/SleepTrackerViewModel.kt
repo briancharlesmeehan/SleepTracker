@@ -117,5 +117,9 @@ class SleepTrackerViewModel(
             database.clear()
         }
     }
+
+    fun doneNavigating() {
+        _navToSleepQuality.value = null
+    }
 }
 
