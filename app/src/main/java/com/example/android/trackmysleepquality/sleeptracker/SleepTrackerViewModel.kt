@@ -85,12 +85,6 @@ class SleepTrackerViewModel(
         }
     }
 
-    private suspend fun insert(night: SleepNight) {
-        withContext(Dispatchers.IO) {
-            database.insert(night)
-        }
-    }
-
     fun onStopTracking() {
         uiScope.launch {
             val oldNight = tonight.value ?: return@launch
@@ -99,16 +93,22 @@ class SleepTrackerViewModel(
         }
     }
 
-    private suspend fun update(night: SleepNight) {
-        withContext(Dispatchers.IO) {
-            database.update(night)
-        }
-    }
-
     fun onClear() {
         uiScope.launch {
             clear()
             tonight.value = null
+        }
+    }
+
+    private suspend fun insert(night: SleepNight) {
+        withContext(Dispatchers.IO) {
+            database.insert(night)
+        }
+    }
+
+    private suspend fun update(night: SleepNight) {
+        withContext(Dispatchers.IO) {
+            database.update(night)
         }
     }
 
