@@ -58,6 +58,8 @@ class SleepQualityFragment : Fragment() {
         val sleepQualityViewModel = ViewModelProviders.of(
                 this, viewModelFactory).get(SleepQualityViewModel::class.java)
 
+        binding.sleepQualityViewModel = sleepQualityViewModel
+
         return binding.root
     }
 }
