@@ -90,6 +90,7 @@ class SleepTrackerViewModel(
             val oldNight = tonight.value ?: return@launch
             oldNight.endTimeMilli = System.currentTimeMillis()
             update(oldNight)
+            _navToSleepQuality.value = oldNight
         }
     }
 
