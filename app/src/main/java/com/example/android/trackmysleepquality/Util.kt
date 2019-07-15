@@ -97,9 +97,9 @@ fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
             }
         }
     }
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
     } else {
-        HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
